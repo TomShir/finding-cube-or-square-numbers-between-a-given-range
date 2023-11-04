@@ -1,55 +1,61 @@
-run_condition='True'
+#Create a Python program which can find square and cube numbers in a given range 
+from math import sqrt
+from numpy import cbrt
 from colorama import Fore 
-import time 
 import sys 
-import string 
-import keyword
-def error_msg(txt):
-    for chars in txt:
-        sys.stdout.flush()
-        time.sleep(0.1)
-        sys.stdout.write(f'{Fore.RED}{chars}')
-    else:
-        reset_to_default_color=Fore.RESET 
-        print(f'\n{reset_to_default_color}')
-        
-run_condition='True'
-while bool(run_condition):
-    identifier=str(input('identifier:'))
-    def check_if_valid_identifier(sample_identifier):
-        check_if_keyword=keyword.iskeyword(sample_identifier)
-        check_digits=sample_identifier[0].isdigit()
-        maximum_length=79
-        if check_if_keyword==True:
-            Invalid_identifer_msg_1='Error, your identifier cannot be a python keyword.'
-            error_msg(txt=Invalid_identifer_msg_1)
-        else:
-            pass
-        if check_digits==True:
-          Invalid_identifier_msg_2='Your indentifier Should not start with any numeric values'
-          error_msg(txt=Invalid_identifier_msg_2)
-        else:
-          pass 
-        if len(sample_identifier)>maximum_length:
-          Invalid_identifier_msg_3='Your identifier cannot exceed 79 characters'
-          error_msg(Invalid_identifier_msg_3)
-        else:
-          pass
-          result=string.punctuation 
-          special_characters=[]
-          for chars in result:
-            special_characters.append(chars)
-          else:
-            special_characters.pop(26)
-            for char in  sample_identifier:
-              if char in ''.join(special_characters):
-                Invalid_identifier_msg_4='Your identifier cannot contain special characters'
-                error_msg(txt=Invalid_identifier_msg_4)
-                break 
-              else:
-                pass    
+import time
+while True:
+ try:
+   def start_limit():
+    global start 
+    global limit 
+    start=int(input('start:'))
+    limit=int(input('limit:'))
+    
+   cube='cube'
+   square_numbers='square'
+   type_of_numbers=[square_numbers,cube]
+   for num in type_of_numbers:
+    if num==type_of_numbers[0]:
+        print(f'{num[0:3]}:{num}')
+    elif num==type_of_numbers[1]:
+        print(f'{num}:{num}')
+   else:
+    square_or_cube=input('type_of_number:')
+    if square_or_cube==square_numbers[0:3]:
+        start_limit()
+        time.sleep(0.2)
+        print(f'square numbers between {start} and {limit}:')
+        time.sleep(0.2)
+        for n in range(start,limit):
+            square_root=sqrt(n)
+            if square_root%1==0:
+                print(n)
             else:
-              if len(sample_identifier)<maximum_length and check_if_keyword==False and check_digits==False and char is not ''.join(special_characters):
-                print('Valid Identifier')
-                
-    check_if_valid_identifier(sample_identifier=identifier)
+                pass
+    elif square_or_cube==cube:
+        start_limit()
+        time.sleep(0.2)
+        numbers=[]
+        for x in range(start,limit):
+            numbers.append(x)
+        else:
+            print(f'cube numbers between {start} and {limit}:\n')
+            time.sleep(0.2)
+            for num in numbers:
+                if cbrt(num)%1==0:
+                    print(num)
+                else:
+                  pass 
+ except ValueError:
+     
+    def error_msg(txt):
+     for n in txt:
+      sys.stdout.flush()
+      time.sleep(0.2)
+      sys.stdout.write(f'{Fore.RED}{n}\n')
+     else:
+      reset_to_default_color=Fore.RESET 
+      print(f'{reset_to_default_color}')
+
+    error_msg(txt='Not a numeric value inputted')
