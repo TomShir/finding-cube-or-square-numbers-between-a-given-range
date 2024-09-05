@@ -27,7 +27,7 @@ while True:
         time.sleep(0.2)
         print(f'square numbers between {start} and {limit}:')
         time.sleep(0.2)
-        for n in range(start,limit):
+        for n in range(start,limit+1):
             square_root=sqrt(n)
             if square_root%1==0:
                 print(n)
